@@ -39,7 +39,7 @@
         Fixtures.getCollection = function(numberOfAlbums){
             var picassoArray = [];
             for (let i = 0; i < numberOfAlbums; i++){
-              picassoArray.push(albumPicasso);
+              picassoArray.push(angular.copy(albumPicasso));
             }
             return picassoArray;
         }
