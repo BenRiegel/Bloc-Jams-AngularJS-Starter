@@ -22,7 +22,7 @@
         */
         var setSong = function(song) {
             if (currentBuzzObject) {
-                stopSong();
+                stopSong(SongPlayer.currentSong);
             }
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
@@ -45,9 +45,9 @@
         * @function stopSong
         * @desc stops the current audio file and flags song as not playing
         */
-        var stopSong = function(){
+        var stopSong = function(song){
           currentBuzzObject.stop();
-          SongPlayer.currentSong.playing = null;
+          song.playing = null;
         }
 
         /**
@@ -108,7 +108,7 @@
             currentSongIndex--;
 
             if (currentSongIndex < 0) {
-                stopSong();
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
@@ -128,7 +128,7 @@
             currentSongIndex++;
 
             if (currentSongIndex == currentAlbum.songs.length) {
-                stopSong();
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
