@@ -77,6 +77,12 @@
         SongPlayer.currentTime = null;
 
         /**
+        * @desc Current volumne of the song player
+        * @type {Number}
+        */
+        SongPlayer.volume = 50;
+
+        /**
         * @function SongPlayer.play
         * @desc public SongPlayer method; checks to see if the clicked song is
         * has already been selected; if it is, then the song is paused; if it's
@@ -157,6 +163,17 @@
                 currentBuzzObject.setTime(time);
             }
         };
+
+        /**
+        * @function setVolume
+        * @desc Set the current volume of the song player
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume){
+          if (currentBuzzObject) {
+              currentBuzzObject.setVolume(volume);
+          }
+        }
 
         /**
         * @function SongPlayer.getArtistName
